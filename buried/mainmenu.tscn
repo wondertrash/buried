@@ -1,0 +1,141 @@
+[gd_scene load_steps=11 format=3 uid="uid://dj1m5ouws3j0i"]
+
+[ext_resource type="FontFile" uid="uid://b0qtp7uakp1l1" path="res://PressStart2P-vaV7.ttf" id="1_cmhrf"]
+[ext_resource type="Script" uid="uid://qk2816guptuc" path="res://mainmenu.gd" id="1_d2nv2"]
+[ext_resource type="AudioStream" uid="uid://ce5v7xkdlwt2w" path="res://click.wav" id="3_wgsso"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_eiy7p"]
+font = ExtResource("1_cmhrf")
+font_size = 32
+font_color = Color(0.67451, 0.419608, 0.14902, 1)
+shadow_size = 0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_h7a2f"]
+bg_color = Color(0.223529, 0.223529, 0.223529, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.67451, 0.419608, 0.14902, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qoqlk"]
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.67451, 0.419608, 0.14902, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_iwfq2"]
+bg_color = Color(0.0313726, 0.0313726, 0.0313726, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.67451, 0.419608, 0.14902, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7r1g0"]
+bg_color = Color(0.223529, 0.223529, 0.223529, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.67451, 0.419608, 0.14902, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cqjrg"]
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.67451, 0.419608, 0.14902, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_e2xy7"]
+bg_color = Color(0.0313726, 0.0313726, 0.0313726, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.67451, 0.419608, 0.14902, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+
+[node name="MainMenu" type="Control"]
+z_index = 3
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_d2nv2")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_right = 384.0
+offset_bottom = 384.0
+color = Color(0, 0, 0, 1)
+
+[node name="title" type="Label" parent="."]
+layout_mode = 0
+offset_top = 96.0
+offset_right = 384.0
+offset_bottom = 160.0
+text = "Buried"
+label_settings = SubResource("LabelSettings_eiy7p")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="play" type="Button" parent="."]
+process_mode = 3
+layout_mode = 2
+offset_left = 96.0
+offset_top = 184.0
+offset_right = 290.0
+offset_bottom = 216.0
+theme_override_colors/font_color = Color(0.67451, 0.419608, 0.14902, 1)
+theme_override_colors/font_pressed_color = Color(0.67451, 0.419608, 0.14902, 1)
+theme_override_fonts/font = ExtResource("1_cmhrf")
+theme_override_styles/hover = SubResource("StyleBoxFlat_h7a2f")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_qoqlk")
+theme_override_styles/normal = SubResource("StyleBoxFlat_iwfq2")
+action_mode = 0
+text = "Play"
+
+[node name="quit" type="Button" parent="."]
+process_mode = 3
+layout_mode = 2
+offset_left = 96.0
+offset_top = 240.0
+offset_right = 290.0
+offset_bottom = 272.0
+theme_override_colors/font_color = Color(0.67451, 0.419608, 0.14902, 1)
+theme_override_fonts/font = ExtResource("1_cmhrf")
+theme_override_styles/hover = SubResource("StyleBoxFlat_7r1g0")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_cqjrg")
+theme_override_styles/normal = SubResource("StyleBoxFlat_e2xy7")
+text = "Quit"
+
+[node name="mainMenuClickAudio" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_wgsso")
+
+[connection signal="pressed" from="play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="quit" to="." method="_on_quit_pressed"]

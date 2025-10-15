@@ -1,0 +1,269 @@
+[gd_scene load_steps=22 format=3 uid="uid://cwajpykr2q00d"]
+
+[ext_resource type="PackedScene" uid="uid://dy0ngy08f8p36" path="res://player.tscn" id="1_iotsf"]
+[ext_resource type="PackedScene" uid="uid://bclg6l5ad8vsh" path="res://ground.tscn" id="2_lc2xo"]
+[ext_resource type="AudioStream" uid="uid://bq7xh8f661gwd" path="res://Buried_Soundtrack.wav" id="3_7sc4i"]
+[ext_resource type="Script" uid="uid://b6s5fsaxd2cq3" path="res://gameover.gd" id="3_215e1"]
+[ext_resource type="FontFile" uid="uid://b0qtp7uakp1l1" path="res://PressStart2P-vaV7.ttf" id="4_7sc4i"]
+[ext_resource type="Script" uid="uid://554qyq3ah42h" path="res://win.gd" id="5_80cx4"]
+[ext_resource type="AudioStream" uid="uid://ce5v7xkdlwt2w" path="res://click.wav" id="5_lc2xo"]
+[ext_resource type="Script" uid="uid://crj5vr21drxf6" path="res://powerupspawner.gd" id="6_e8heu"]
+[ext_resource type="PackedScene" uid="uid://c7ed68jtorwdi" path="res://machine_gun.tscn" id="7_rvswv"]
+[ext_resource type="PackedScene" uid="uid://10rcleg24dxl" path="res://nuke.tscn" id="8_boyg6"]
+[ext_resource type="PackedScene" uid="uid://b2rjydl7hvuho" path="res://coffee.tscn" id="9_e36ub"]
+[ext_resource type="PackedScene" uid="uid://b60fblxju80km" path="res://shotgun.tscn" id="10_hb5m1"]
+[ext_resource type="PackedScene" uid="uid://dpmskcy5qofpt" path="res://mobspawner.tscn" id="11_x5p1p"]
+[ext_resource type="PackedScene" uid="uid://do4jacv7ioyph" path="res://enemy.tscn" id="12_qhcbd"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_hq1ik"]
+font = ExtResource("4_7sc4i")
+font_size = 32
+font_color = Color(0.67451, 0.419608, 0.14902, 1)
+shadow_size = 0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nfk4m"]
+bg_color = Color(0.223529, 0.223529, 0.223529, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.67451, 0.419608, 0.14902, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_66tet"]
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.67451, 0.419608, 0.14902, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8mm7a"]
+bg_color = Color(0.0313726, 0.0313726, 0.0313726, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.67451, 0.419608, 0.14902, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7ycvg"]
+bg_color = Color(0.223529, 0.223529, 0.223529, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.67451, 0.419608, 0.14902, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wr18j"]
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.67451, 0.419608, 0.14902, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hq1ik"]
+bg_color = Color(0.0313726, 0.0313726, 0.0313726, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.67451, 0.419608, 0.14902, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+
+[node name="Game" type="Node2D"]
+position = Vector2(161, 103)
+
+[node name="Player" parent="." instance=ExtResource("1_iotsf")]
+position = Vector2(32, 104)
+
+[node name="Ground" parent="." instance=ExtResource("2_lc2xo")]
+position = Vector2(-128, -32)
+
+[node name="soundtrackAudio" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_7sc4i")
+volume_db = -8.0
+autoplay = true
+
+[node name="GameManager" type="Node" parent="."]
+
+[node name="GameOver" type="Control" parent="GameManager"]
+process_mode = 3
+visible = false
+top_level = true
+z_index = 3
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("3_215e1")
+
+[node name="ColorRect" type="ColorRect" parent="GameManager/GameOver"]
+layout_mode = 0
+offset_right = 384.0
+offset_bottom = 384.0
+color = Color(0, 0, 0, 1)
+
+[node name="gameOver" type="Label" parent="GameManager/GameOver"]
+layout_mode = 0
+offset_top = 96.0
+offset_right = 384.0
+offset_bottom = 160.0
+text = "You Died!"
+label_settings = SubResource("LabelSettings_hq1ik")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="restart" type="Button" parent="GameManager/GameOver"]
+process_mode = 3
+layout_mode = 0
+offset_left = 96.0
+offset_top = 184.0
+offset_right = 288.0
+offset_bottom = 217.0
+theme_override_colors/font_color = Color(0.67451, 0.419608, 0.14902, 1)
+theme_override_colors/font_pressed_color = Color(0.67451, 0.419608, 0.14902, 1)
+theme_override_fonts/font = ExtResource("4_7sc4i")
+theme_override_styles/hover = SubResource("StyleBoxFlat_nfk4m")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_66tet")
+theme_override_styles/normal = SubResource("StyleBoxFlat_8mm7a")
+action_mode = 0
+text = "Restart"
+
+[node name="quit" type="Button" parent="GameManager/GameOver"]
+process_mode = 3
+layout_mode = 0
+offset_left = 96.0
+offset_top = 240.0
+offset_right = 288.0
+offset_bottom = 271.0
+theme_override_colors/font_color = Color(0.67451, 0.419608, 0.14902, 1)
+theme_override_fonts/font = ExtResource("4_7sc4i")
+theme_override_styles/hover = SubResource("StyleBoxFlat_7ycvg")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_wr18j")
+theme_override_styles/normal = SubResource("StyleBoxFlat_hq1ik")
+text = "Quit"
+
+[node name="gameOverClickAudio" type="AudioStreamPlayer" parent="GameManager/GameOver"]
+stream = ExtResource("5_lc2xo")
+
+[node name="YouWin" type="Control" parent="GameManager"]
+process_mode = 3
+visible = false
+top_level = true
+z_index = 3
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("5_80cx4")
+
+[node name="ColorRect" type="ColorRect" parent="GameManager/YouWin"]
+layout_mode = 0
+offset_right = 384.0
+offset_bottom = 384.0
+color = Color(0, 0, 0, 1)
+
+[node name="youWin" type="Label" parent="GameManager/YouWin"]
+layout_mode = 0
+offset_top = 96.0
+offset_right = 416.0
+offset_bottom = 160.0
+scale = Vector2(0.922273, 1)
+text = "You Survived!"
+label_settings = SubResource("LabelSettings_hq1ik")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="playagain" type="Button" parent="GameManager/YouWin"]
+process_mode = 3
+layout_mode = 0
+offset_left = 96.0
+offset_top = 184.0
+offset_right = 288.0
+offset_bottom = 217.0
+theme_override_colors/font_color = Color(0.67451, 0.419608, 0.14902, 1)
+theme_override_colors/font_pressed_color = Color(0.67451, 0.419608, 0.14902, 1)
+theme_override_fonts/font = ExtResource("4_7sc4i")
+theme_override_styles/hover = SubResource("StyleBoxFlat_nfk4m")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_66tet")
+theme_override_styles/normal = SubResource("StyleBoxFlat_8mm7a")
+action_mode = 0
+text = "Play Again"
+
+[node name="quit" type="Button" parent="GameManager/YouWin"]
+process_mode = 3
+layout_mode = 0
+offset_left = 96.0
+offset_top = 240.0
+offset_right = 288.0
+offset_bottom = 271.0
+theme_override_colors/font_color = Color(0.67451, 0.419608, 0.14902, 1)
+theme_override_fonts/font = ExtResource("4_7sc4i")
+theme_override_styles/hover = SubResource("StyleBoxFlat_7ycvg")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_wr18j")
+theme_override_styles/normal = SubResource("StyleBoxFlat_hq1ik")
+text = "Quit"
+
+[node name="winClickAudio" type="AudioStreamPlayer" parent="GameManager/YouWin"]
+stream = ExtResource("5_lc2xo")
+
+[node name="PowerupSpawner" type="Node2D" parent="."]
+z_index = 1
+script = ExtResource("6_e8heu")
+powerup_scenes = Array[PackedScene]([ExtResource("7_rvswv"), ExtResource("8_boyg6"), ExtResource("9_e36ub"), ExtResource("10_hb5m1")])
+
+[node name="MobSpawner" parent="." instance=ExtResource("11_x5p1p")]
+mob_scene = ExtResource("12_qhcbd")
+spawn_points = Array[NodePath]([NodePath("../topL"), NodePath("../topR"), NodePath("../rightU"), NodePath("../rightD"), NodePath("../downL"), NodePath("../downR"), NodePath("../leftU"), NodePath("../leftD")])
+
+[node name="topL" type="Marker2D" parent="."]
+position = Vector2(-129, -127)
+
+[node name="topR" type="Marker2D" parent="."]
+position = Vector2(-113, -127)
+
+[node name="rightU" type="Marker2D" parent="."]
+position = Vector2(-1, -15)
+
+[node name="rightD" type="Marker2D" parent="."]
+position = Vector2(-1, 1)
+
+[node name="downL" type="Marker2D" parent="."]
+position = Vector2(-129, 113)
+
+[node name="downR" type="Marker2D" parent="."]
+position = Vector2(-113, 113)
+
+[node name="leftU" type="Marker2D" parent="."]
+position = Vector2(-241, -15)
+
+[node name="leftD" type="Marker2D" parent="."]
+position = Vector2(-241, 1)
+
+[connection signal="pressed" from="GameManager/GameOver/restart" to="GameManager/GameOver" method="_on_restart_pressed"]
+[connection signal="pressed" from="GameManager/GameOver/quit" to="GameManager/GameOver" method="_on_quit_pressed"]
+[connection signal="pressed" from="GameManager/YouWin/playagain" to="GameManager/YouWin" method="_on_playagain_pressed"]
+[connection signal="pressed" from="GameManager/YouWin/quit" to="GameManager/YouWin" method="_on_quit_pressed"]

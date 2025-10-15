@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://dgnlo2x44wqhf"]
+
+[ext_resource type="Texture2D" uid="uid://comg3cf7dlt3s" path="res://buried_sprites.png" id="1_dx84q"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dx84q"]
+size = Vector2(15.8125, 15.8125)
+
+[node name="Powerupspawner" type="Area2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_dx84q")
+hframes = 8
+vframes = 7
+frame = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_dx84q")

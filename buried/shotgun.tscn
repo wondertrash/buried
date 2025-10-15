@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://b60fblxju80km"]
+
+[ext_resource type="Script" uid="uid://chrocjsl0vr03" path="res://shotgun.gd" id="1_5bb75"]
+[ext_resource type="Texture2D" uid="uid://comg3cf7dlt3s" path="res://buried_sprites.png" id="1_hn68x"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5bb75"]
+size = Vector2(16, 15)
+
+[node name="Shotgun" type="Area2D"]
+script = ExtResource("1_5bb75")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_hn68x")
+hframes = 8
+vframes = 7
+frame = 7
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 0.5)
+shape = SubResource("RectangleShape2D_5bb75")

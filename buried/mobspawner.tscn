@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://dpmskcy5qofpt"]
+
+[ext_resource type="Script" uid="uid://bii6s85s5tlsw" path="res://mobspawner.gd" id="1_331oy"]
+[ext_resource type="AudioStream" uid="uid://c6c36nnntvl7c" path="res://win.wav" id="2_vumor"]
+
+[node name="MobSpawner" type="Node"]
+script = ExtResource("1_331oy")
+
+[node name="Timer" type="Timer" parent="."]
+
+[node name="winAudio" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_vumor")
+volume_db = -8.0
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://cul0n8rdoba3f"]
+
+[ext_resource type="Script" uid="uid://dskngt2j24cg4" path="res://bullet.gd" id="1_v8qja"]
+[ext_resource type="Texture2D" uid="uid://ds28j4mvxt4ms" path="res://buried_sprites.png" id="2_v8qja"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_v8qja"]
+radius = 2.0
+
+[node name="Bullet" type="Area2D"]
+collision_layer = 4
+collision_mask = 10
+script = ExtResource("1_v8qja")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_v8qja")
+hframes = 8
+vframes = 7
+frame = 48
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_v8qja")

@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://10rcleg24dxl"]
+
+[ext_resource type="Script" uid="uid://cj0ltyfqh6sb2" path="res://nuke.gd" id="1_gvcs2"]
+[ext_resource type="Texture2D" uid="uid://comg3cf7dlt3s" path="res://buried_sprites.png" id="1_tceaf"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gvcs2"]
+size = Vector2(15.875, 16)
+
+[node name="Nuke" type="Area2D"]
+script = ExtResource("1_gvcs2")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_tceaf")
+hframes = 8
+vframes = 7
+frame = 5
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_gvcs2")
